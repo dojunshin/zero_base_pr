@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="root"></div>
+  </body>
+  <script
+    src="https://unpkg.com/react@17/umd/react.production.min.js"
+    crossorigin
+  ></script>
+  <script
+    src="https://unpkg.com/react-dom@17/umd/react-dom.production.min.js"
+    crossorigin
+  ></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+  <script type="text/babel">
+    let titleName = "I like Front-end";
+
+    const root = document.getElementById("root");
+
+    const Container = () => {
+      const [title, setTitle] = React.useState("Front-end");
+
+      function clickedButton(text) {
+        console.log("Clicked : ", text);
+        setTitle("I like ${text}");
+      }
+
+      return (
+        <div>
+          <span>{title}</span>;
+          <button onClick={(e) => clickedButton(e.target.innerText)}>
+            React
+          </button>
+          <button onClick={(e) => clickedButton(e.target.innerText)}>
+            Angular
+          </button>
+          <button onClick={(e) => clickedButton(e.target.innerText)}>
+            Vue
+          </button>
+          <button onClick={(e) => clickedButton(e.target.innerText)}>
+            Svelte
+          </button>
+        </div>
+      );
+    };
+
+    function render() {
+      ReactDOM.render(<Container />, root); //UI에 그릴 수 있는 함수
+    }
+
+    render();
+  </script>
+</html>

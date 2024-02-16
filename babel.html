@@ -1,0 +1,66 @@
+<!--제로베이스 첫 강의 테스트...-->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="root"></div>
+  </body>
+  <script
+    src="https://unpkg.com/react@17/umd/react.production.min.js"
+    crossorigin
+  ></script>
+  <script
+    src="https://unpkg.com/react-dom@17/umd/react-dom.production.min.js"
+    crossorigin
+  ></script>
+
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+  <script type="text/babel">
+    function clickedButton() {
+      console.log("Clicked");
+    }
+
+    //createElement('', {onClick} , innerText);
+    const root = document.getElementById("root");
+    const Title = () => <span> I like front - end </span>;
+    const ReactButton = () => (
+      <button
+        onClick={() => console.log("Clicked")}
+        style={{ fontSize: "16px", color: "red" }}
+      >
+        React
+      </button>
+    );
+    const Angular = () => (
+      <button onClick={() => console.log("Clicked")}>Angular</button>
+    );
+    const Vue = () => (
+      <button onClick={() => console.log("Clicked")}>Vue</button>
+    );
+    const Svelte = () => (
+      <button onClick={() => console.log("Clicked")}>Svelte</button>
+    );
+
+    const Container = () => (
+      <div>
+        <Title />
+        <ReactButton />
+        <Angular />
+        <Vue />
+        <Svelte />
+      </div>
+    );
+    /**
+    const react = <button id="react">React</button>;
+    const container = React.createElement("div", null, [react]);
+    */
+
+    ReactDOM.render(<Container />, root); //UI에 그릴 수 있는 함수
+  </script>
+</html>

@@ -1,0 +1,104 @@
+<!--제로베이스 첫 강의 테스트...-->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>TEST_HTML_FILE_(Commanad+S)</h1>
+    <h1>필수 확장 프로그램</h1>
+    <h1>1.Auto rename tag</h1>
+    <h1>2.Live Server</h1>
+    <h1>3.Prettier</h1>
+
+    <div id="root"></div>
+  </body>
+  <script
+    src="https://unpkg.com/react@17/umd/react.production.min.js"
+    crossorigin
+  ></script>
+  <script
+    src="https://unpkg.com/react-dom@17/umd/react-dom.production.min.js"
+    crossorigin
+  ></script>
+
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+  <script>
+    /**
+     * JSX문법
+     * script 단에 아래와 같이 html 태그 입력하는 방식
+     * const element = <h1> Hello, world </h1>
+     *
+     * 조금 더 심화하면
+     * const name = 'Hosh Perez';
+     * const element = <h1> Hello, {name} </h1>
+     *
+     * 결과 값은 Hello, Josh Perez
+     *
+     * Trans Filer => BABEL 프로그램을 이용함...
+     *
+     */
+
+    function clickedButton() {
+      console.log("Clicked");
+    }
+
+    const root = document.getElementById("root");
+
+    /**
+    const react = React.createElement(
+      "button",
+      { id: "React", onClick: () => console.log("click") }, //inLine Function
+      "react"
+    );
+
+    const angular = React.createElement("button", { id: "angular" }, "angular");
+    const vue = React.createElement("button", { id: "vue" }, "vue");
+    const svelte = React.createElement("button", { id: "svelte" }, "svelte");
+    */
+
+    const react = React.createElement(
+      "button",
+      { id: "React", onClick: clickedButton },
+      "React"
+    );
+
+    const angular = React.createElement(
+      "button",
+      { id: "angular", onClick: clickedButton },
+      "angular"
+    );
+    const vue = React.createElement(
+      "button",
+      { id: "vue", onClick: clickedButton },
+      "vue"
+    );
+    const svelte = React.createElement(
+      "button",
+      { id: "svelte", onClick: clickedButton },
+      "svelte"
+    );
+
+    const title = React.createElement(
+      "span",
+      { id: "title" },
+      "I like Front=end"
+    );
+
+    //onClick, onMouse Event추가... 규칙은 앞절에 on을 붙여야함....
+
+    const container = React.createElement("div", null, [
+      title,
+      react,
+      angular,
+      vue,
+      svelte,
+    ]);
+
+    ReactDOM.render(container, root); //UI에 그릴 수 있는 함수
+  </script>
+</html>

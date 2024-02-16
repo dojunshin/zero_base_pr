@@ -1,0 +1,102 @@
+<!--
+
+  Zero-Base Second 강의
+
+  React 의 State = 상태
+
+  Ex) Button의 On/Off 상태...
+
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="root"></div>
+  </body>
+  <script
+    src="https://unpkg.com/react@17/umd/react.production.min.js"
+    crossorigin
+  ></script>
+  <script
+    src="https://unpkg.com/react-dom@17/umd/react-dom.production.min.js"
+    crossorigin
+  ></script>
+
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+  <script type="text/babel">
+    let titleName = "I like Front-end";
+
+    /**
+     *  State의 특징
+     *  - 전역적으로 사용 불가, 하나의 컴포넌트 안에서만 사용할 수 있는 독립적인 상태..?
+     *
+     * */
+
+    function clickedButton(text) {
+      // text -> innerText
+      console.log("Clicked", text);
+
+      titleName = text;
+
+      //render(); //state
+    }
+
+    //createElement('', {onClick} , innerText);
+    const root = document.getElementById("root");
+    const Title = () => <span>{titleName}</span>;
+    const ReactButton = () => (
+      <button onClick={(e) => clickedButton(e.target.innerText)}>React</button>
+    );
+
+    const Angular = () => (
+      <button onClick={(e) => clickedButton(e.target.innerText)}>
+        Angular
+      </button>
+    );
+
+    const Vue = () => (
+      <button onClick={(e) => clickedButton(e.target.innerText)}>Vue</button>
+    );
+
+    const Svelte = () => (
+      <button onClick={(e) => clickedButton(e.target.innerText)}>Svelte</button>
+    );
+
+    const Container = () => {
+      /**
+      const titleState = React.useState(0);
+      console.log(titleState[0]); //초기값?
+      console.log(titleState[1]); //setState(원하는 값) -> titleState[0]이 변경된다?
+      */Angular
+
+      const [title, setTitle] = React.useState(0);
+      return (
+        <div>
+          <Title />
+          <ReactButton />
+          <Angular />
+          <Vue />
+          <Svelte />
+        </div>
+      );
+    };
+
+    /**
+    const react = <button id="react">React</button>;
+    const container = React.createElement("div", null, [react]);
+    */
+
+    function render() {
+      ReactDOM.render(<Container />, root); //UI에 그릴 수 있는 함수
+    }
+
+    render();
+  </script>
+</html>

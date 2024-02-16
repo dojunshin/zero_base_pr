@@ -1,0 +1,86 @@
+<!--
+    Props : 부모 컴포넌트가 자식 컴포넌트에게 전달해주는 데이터
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="root"></div>
+  </body>
+  <script
+    src="https://unpkg.com/react@17/umd/react.production.min.js"
+    crossorigin
+  ></script>
+  <script
+    src="https://unpkg.com/react-dom@17/umd/react-dom.production.min.js"
+    crossorigin
+  ></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+  <script type="text/babel">
+    let titleName = "I like Front-end";
+    const root = document.getElementById("root");
+
+    const Title = (props) => <span>I like {props.titleProps}</span>;
+    const Button = (props) => (
+      <button
+        onClick={(e) => props.onClick(e.target.innerText)}
+        style={props.style}
+      >
+        {props.children}
+      </button>
+    );
+
+    //컨테이너 내에서 title이 선언되어 있는데 이걸 불러올 수 없으므로, props를 사용하여 해당 변수 값을 불러올 수 있음.
+    const Container = () => {
+      const [title, setTitle] = React.useState("Front-end222"); //useState 사용시 가장 기본적인 문법
+
+      function clickedButton(text) {
+        console.log("Clicked : ", text);
+
+        setTitle(text);
+      }
+
+      return (
+        <div>
+          <Title titleProps={title} />
+          <Button onClick={clickedButton} style={{ fontSize: "20px" }}>
+            React
+          </Button>
+          <Button onClick={clickedButton} style={{ color: "red" }}>
+            Angualr
+          </Button>
+          <Button onClick={clickedButton} style={{ fontSize: "12px" }}>
+            Vue
+          </Button>
+          <Button onClick={clickedButton}>Svelte</Button>
+
+          <button onClick={(e) => clickedButton(e.target.innerText)}>
+            React
+          </button>
+          <button onClick={(e) => clickedButton(e.target.innerText)}>
+            Angular
+          </button>
+          <button onClick={(e) => clickedButton(e.target.innerText)}>
+            Vue
+          </button>
+          <button onClick={(e) => clickedButton(e.target.innerText)}>
+            Svelte
+          </button>
+        </div>
+      );
+    };
+
+    function render() {
+      ReactDOM.render(<Container />, root); //UI에 그릴 수 있는 함수
+    }
+
+    render();
+  </script>
+</html>
